@@ -1,28 +1,50 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <MovieList :movieData="pageMovies"></MovieList>
+    <Pager @change="handle" :current="current" :pageSize="pageSize" :total="total"></Pager>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Pager from './components/pager'
+import './assets/index.css'
+import MovieList from './components/movieList'
+import movieServe from './services/movieServices'
 
 export default {
   name: 'App',
+  data(){
+    return {
+      current:1,
+      pageSize:6,
+      pageMovies:[],
+      total:0
+    }
+  },
   components: {
-    HelloWorld
+    Pager,
+    MovieList
+  },
+  mounted(){
+    movieServe.getMoviesData(1,2).then(resp=>{
+      this.total=resp.total;
+      this.pageMovies=resp.datas
+    })
+  },
+  // computed:{
+  //   pageMovies(){
+  //       return this.allMovies.slice((this.current-1)*this.pageSize,this.current*this.pageSize);
+  //   }
+  // },
+  methods:{
+    handle(e){
+      this.current=e;
+    }
+    
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
