@@ -80,7 +80,7 @@
     background: rgba(0, 0, 0, .5);
 }
 
-.modal .center {
+.center {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -90,4 +90,48 @@
 .modal .loading {
     color: #fff;
     font-size: 2em;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav {
+    height: 64px;
+    line-height: 64px;
+    background: #333;
+    color: #ddd;
+    padding: 0 100px;
+}
+
+nav a {
+    height: 64px;
+    float: left;
+    padding: 0 20px;
+}
+
+nav a.router-link-exact-active {
+    background: #f40;
+}
+
+nav .left{
+    float: left;
+}
+
+nav .right{
+    float: right;
+}
+
+nav .right span{
+    margin: 0 20px;
+}
+
+input{
+    border: 1px solid #ccc;
 }
