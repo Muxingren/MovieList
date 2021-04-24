@@ -17,7 +17,7 @@ export default {
     
     computed:{
         user(){
-            return this.$store.state.loginUser.data
+            return this.$store.state.loginModule.loginUser.data
         }
     },
     mounted(){
@@ -28,7 +28,7 @@ export default {
     },
     methods:{
         loginOut(){
-            this.$store.dispatch('loginOut');
+            this.$store.dispatch('loginModule/loginOut');
             this.$router.push('/');
         }
     }

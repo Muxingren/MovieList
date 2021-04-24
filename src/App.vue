@@ -21,7 +21,7 @@ export default {
     Header
   },
   mounted(){
-    this.$store.dispatch('syncLocal');
+    this.$store.dispatch('loginModule/syncLocal');
   },
   
   methods:{

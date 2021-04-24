@@ -29,15 +29,15 @@ export default {
         }
     },
     computed:Vuex.mapState({
-        isShow:state=>state.loginUser.isLoading
+        isShow:state=>state.loginModule.loginUser.isLoading
     }),
     components:{
         Loading
     },
     methods:{
-        async handleLogin(){
+        handleLogin(){
             let userData={loginId:this.loginId,loginPwd:this.loginPwd};
-            const result=await this.$store.dispatch('login',userData);
+            const result=this.$store.dispatch('loginModule/login',userData);
             if(result){
                 this.$router.push('/movie');
             }
